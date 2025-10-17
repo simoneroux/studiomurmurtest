@@ -1,0 +1,399 @@
+/* Here is every setting for the style of the website */
+
+
+/* Font Faces */
+
+
+
+@font-face {
+    font-family:lato-thin ;
+    src: url(Lato/Lato-Thin.ttf);
+}
+
+@font-face {
+    font-family:lato-black ;
+    src: url(Lato/Lato-Black.ttf);
+}
+
+@font-face {
+    font-family:lato-reg ;
+    src: url(Lato/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family:lato-light ;
+    src: url(Lato/Lato-Light.ttf);
+}
+
+/* General */
+
+body{
+    width: 100%;
+    margin: 0;
+    font-family: lato-thin, sans-serif;
+    opacity: 0;
+    animation: fadeInPage 2s ease forwards;
+}
+
+@keyframes fadeInPage {
+    to { opacity: 1 ;}
+}
+
+h1, h2, p{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0;
+    padding: 0;
+}
+
+h1{
+    margin-bottom: 0;
+    font-family: lato-light, sans-serif;
+    font-size: 3em;
+    color: rgb(0, 0, 0);
+}
+
+h2 {
+    font-size: 18px;
+    text-align: center;
+    font-family: lato-thin, sans-serif;
+}
+
+h3{
+    font-family: lato-light, sans-serif;
+    font-size: 14px;
+    text-align:center ;
+    font-weight: 1; 
+}
+
+p{
+    font-family: lato-light,sans-serif;
+    font-size: 13px;
+    width: 500px;
+}
+
+hr{
+    border: none;
+    border-top: 1px solid lightgrey;
+    width: 30%;
+    height: 0px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+#block1 {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    text-align: center;
+}
+
+/* Tabs and Content */
+
+#block2{
+    background-color: transparent;
+    position: relative;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.dropbtn {
+    background-color:transparent;
+    font-family: lato-thin, sans-serif;
+    position: relative;
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 180px;
+    letter-spacing: 0;
+    transition: letter-spacing 0.3s ease;
+    padding: 0;
+}
+
+.dropbtn.active{
+    letter-spacing: 3px;
+}
+
+.dropdown-content {
+    background-color: transparent;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: 
+        max-height 500ms ease,
+        opacity 500ms ease,
+        visibility 500ms ease,
+        margin-top 500ms ease;
+    margin-top: 0;
+    pointer-events: none;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: justify;
+    width: 100%;
+    z-index: 1;
+    padding-top: 30px;
+}
+
+.dropdown-content.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    margin-top: 10px;
+    max-height: 1000px;
+}
+
+.dropbtn:hover{
+    letter-spacing: 5px;
+}
+
+/* Table */
+
+table{
+    border-collapse: collapse;
+}
+
+#blocktable{
+    background-color: transparent;
+    position: relative;
+    width: 90%;
+    margin: 0;
+    padding: 10px;
+    overflow-x: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#blocktable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#blocktable thead th {
+    font-family: lato-black, sans-serif;
+    font-weight: normal;
+}
+
+th, td{
+    padding: 10px 30px;
+    border-bottom: 1px solid lightgrey;
+    font-size: 13px;
+    font-family: lato-light, sans-serif;
+    text-align: left;
+    font-weight: normal;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row td {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color:  rgb(239, 239, 239);
+}
+
+.dropdown-row {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: 
+        visibility 0s ease 0.5s, 
+        opacity 0.5s ease,
+        height 0.5s ease;
+}
+
+.dropdown-row.active {
+    visibility: visible;
+    opacity: 1;
+    height: auto; /* Use JS to calculate exact height or set a max-height */
+    transition-delay: 0s;
+}
+
+.dropdown-row td{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.table-dropdown-content{
+    max-height: 0;
+    min-width: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 
+        max-height 0.5s ease,
+        opacity 0.5s ease,
+        padding 0.5s ease;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    display: block;
+}
+
+.table-dropdown-content p{
+    margin: 0;
+    padding: 10px;
+    font-size: 13px;
+    font-family: lato-light,sans-serif;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    min-width: none;
+    width: 100%;
+    max-width: 70%;
+    position: relative;
+    text-align: justify;
+}
+
+.dropdown-row .table-dropdown-content {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    transition: 
+        max-height 0.3s ease,
+        opacity 0.3s,
+        padding 0.3s;
+}
+
+.dropdown-row .table-dropdown-content::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: lightgray;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.dropdown-row.active .table-dropdown-content {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.dropdown-row.active .table-dropdown-content::after {
+    transform: scaleX(1);
+}
+
+@media (max-width:768px){
+    .table-dropdown-content {
+        padding:10px 15px;
+    }
+}
+/* Footer (rights) */
+
+#block4{
+    position: fixed;
+    background-color: rgb(0, 0, 0);
+    color: rgb(177, 177, 177);
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    padding-left: 10px;
+}
+
+#afooter{
+    text-decoration: none;
+    color: rgb(99, 99, 99);;
+}
+
+h4{
+    font-family: lato-thin;
+    font-size: 10px;
+    color : rgb(99, 99, 99)
+}
+
+@media (max-width: 768px) {
+    /*#blocktable td:nth-child(1),*/
+    /*#blocktable th:nth-child(1),*/
+    #blocktable td:nth-child(3),
+    #blocktable th:nth-child(3) {
+    display: none;
+  }
+}
+
+
+
+/*
+
+form{
+    position: relative;
+    display: block;
+    background-color: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    font-family: lato-light,sans-serif;
+}
+
+label{
+    width: 100px;
+}
+
+input{
+    border: none;
+    border-bottom: solid 1px lightgray;
+    font-family: lato-light,sans-serif;
+    font-size: 13px;
+    width: 50%;
+
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: solid 1px lightgray;
+    font-family: lato-light, sans-serif;
+    font-size: 13px;
+    resize: none; 
+    overflow: hidden; 
+    min-height: 40px; 
+}
+
+textarea:focus {
+    outline: none; 
+    r: #f9f9f9; 
+
+}
+
+input:focus {
+    outline: none; 
+    background-color: #f9f9f9; 
+  
+}
+
+button {
+    border: none;
+    background-color: white;
+    font-family: lato-light,sans-serif;
+    font-size: 15px;
+    font-weight: 1;
+}
+
+button:hover{
+    cursor: pointer;
+    letter-spacing: 5px;
+}
+*/
+
+
+
