@@ -29,64 +29,51 @@
 
         header {
             text-align: center;
-            padding: 80px 20px 60px;
+            padding: 60px 20px 40px;
             background: white;
-            flex-shrink: 0;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 300;
-            letter-spacing: 12px;
+            letter-spacing: 8px;
             color: #1a1a1a;
             margin: 0;
-            position: relative;
-            display: inline-block;
         }
 
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 1px;
-            background: #1a1a1a;
+        main {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px 30px 80px;
+            flex: 1;
         }
 
-        nav {
-            background: white;
-            border-bottom: 1px solid #e8e8e8;
-            padding: 40px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            flex-shrink: 0;
-        }
-
-        .nav-buttons {
+        .dropdown-container {
             display: flex;
             justify-content: center;
-            gap: 80px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 50px;
+            margin-bottom: 30px;
         }
 
-        .nav-btn {
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
             background: transparent;
             border: none;
             font-size: 16px;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             cursor: pointer;
-            padding: 8px 0;
+            padding: 10px 0;
             color: #666;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        .nav-btn::after {
+        .dropbtn::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -95,75 +82,80 @@
             height: 1px;
             background: #1a1a1a;
             transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s ease;
         }
 
-        .nav-btn:hover {
+        .dropbtn:hover {
             color: #1a1a1a;
         }
 
-        .nav-btn.active {
+        .dropbtn.active {
             color: #1a1a1a;
         }
 
-        .nav-btn.active::after {
+        .dropbtn.active::after {
             transform: scaleX(1);
         }
 
-        main {
-            max-width: 1000px;
-            margin: 80px auto 0;
-            padding: 0 40px 80px;
-            flex: 1;
-        }
-
-        .content-section {
-            display: none;
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
             opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
+            transition: all 0.4s ease;
+            margin-top: 0;
         }
 
-        .content-section.active {
-            display: block;
+        .dropdown-content.visible {
+            max-height: 5000px;
+            opacity: 1;
+            margin-top: 30px;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .about-content p {
-            font-size: 15px;
-            line-height: 2;
+        .dropdown-content p {
+            font-size: 14px;
+            line-height: 1.7;
             font-weight: 300;
             color: #2a2a2a;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: justify;
+        }
+
+        .dropdown-content h3 {
+            font-size: 15px;
+            font-weight: 300;
+            text-align: center;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        .dropdown-content h3 a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .dropdown-content h3 a:hover {
+            border-bottom-color: #1a1a1a;
         }
 
         .lato-black {
             font-weight: 700;
         }
 
-        .projects-content {
-            background: white;
-            border-radius: 2px;
-            padding: 60px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
-        }
-
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
 
         thead th {
             font-weight: 700;
             font-size: 11px;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #999;
-            padding: 0 0 24px 0;
+            padding: 0 0 15px 0;
             text-align: left;
             border-bottom: 1px solid #e8e8e8;
         }
@@ -171,32 +163,32 @@
         tbody tr.clickable-row {
             cursor: pointer;
             transition: background 0.2s ease;
-            border-bottom: 1px solid #f5f5f5;
         }
 
         tbody tr.clickable-row:hover {
-            background: #fafafa;
+            background: #f8f8f8;
         }
 
         tbody tr.clickable-row td {
-            padding: 28px 0;
-            font-size: 14px;
+            padding: 20px 0;
+            font-size: 13px;
             font-weight: 300;
             color: #2a2a2a;
+            border-bottom: 1px solid #f5f5f5;
             vertical-align: top;
         }
 
         tbody tr.clickable-row td:first-child {
-            width: 120px;
+            width: 80px;
             color: #666;
         }
 
         tbody tr.clickable-row td:nth-child(2) {
-            padding-right: 40px;
+            padding-right: 20px;
         }
 
         tbody tr.clickable-row td:last-child {
-            width: 280px;
+            width: 180px;
             color: #666;
         }
 
@@ -204,7 +196,7 @@
             visibility: hidden;
             opacity: 0;
             max-height: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         .dropdown-row.active {
@@ -222,56 +214,23 @@
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #fafafa;
+            transition: all 0.3s ease;
+            background: #f8f8f8;
         }
 
         .dropdown-row.active .table-dropdown-content {
             max-height: 1000px;
             opacity: 1;
-            padding: 32px 0 40px 0;
+            padding: 20px 0;
         }
 
         .table-dropdown-content p {
-            font-size: 14px;
-            line-height: 1.9;
+            font-size: 13px;
+            line-height: 1.7;
             color: #444;
             font-weight: 300;
             text-align: justify;
-            max-width: 90%;
-        }
-
-        .contact-content {
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .contact-content p {
-            font-size: 15px;
-            line-height: 1.8;
-            font-weight: 300;
-            color: #2a2a2a;
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-info {
-            font-size: 18px;
-            font-weight: 300;
-            line-height: 2;
-        }
-
-        .contact-info a {
-            color: #1a1a1a;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            border-bottom-color: #1a1a1a;
+            padding: 0 10px;
         }
 
         footer {
@@ -300,25 +259,20 @@
 
         @media (max-width: 768px) {
             h1 {
-                letter-spacing: 6px;
-                font-size: 2rem;
-            }
-
-            .nav-buttons {
-                gap: 40px;
-            }
-
-            .nav-btn {
-                font-size: 14px;
+                letter-spacing: 4px;
+                font-size: 1.8rem;
             }
 
             main {
-                margin: 40px auto;
-                padding: 0 20px;
+                padding: 40px 20px 60px;
             }
 
-            .projects-content {
-                padding: 30px 20px;
+            .dropdown-container {
+                gap: 35px;
+            }
+
+            .dropbtn {
+                font-size: 14px;
             }
 
             thead th:last-child,
@@ -327,30 +281,26 @@
             }
 
             tbody tr.clickable-row td {
-                padding: 20px 0;
-                font-size: 13px;
+                padding: 15px 0;
+                font-size: 12px;
             }
 
-            .table-dropdown-content p {
-                max-width: 100%;
+            .dropdown-content p {
+                font-size: 13px;
             }
         }
 
         @media (max-width: 480px) {
             header {
-                padding: 60px 20px 40px;
-            }
-
-            h1 {
-                letter-spacing: 4px;
-            }
-
-            .nav-buttons {
-                gap: 30px;
+                padding: 40px 20px 30px;
             }
 
             main {
-                margin: 30px auto;
+                padding: 30px 15px 50px;
+            }
+
+            .dropdown-container {
+                gap: 25px;
             }
         }
     </style>
@@ -360,147 +310,142 @@
         <h1>STUDIO MURMUR</h1>
     </header>
     
-    <nav>
-        <div class="nav-buttons">
-            <button class="nav-btn active" data-section="about">About</button>
-            <button class="nav-btn" data-section="projects">Projects</button>
-            <button class="nav-btn" data-section="contact">Contact</button>
-        </div>
-    </nav>
-
     <main>
-        <!-- About Section -->
-        <section id="about" class="content-section active">
-            <div class="about-content">
-                <p>
-                    <span class="lato-black">Studio murmur</span> reflects my desire to work with my clients in their raw form and build something together, like an artist with white walls and wooden shelves who exposes their works and materials in a way that highlights their distinctive and authentic light.
-                </p>
-                
-                <p>
-                    I always wanted to be an artisan or a builder. Instead, I studied classical history, finance, and heritage preservation. I've mastered research and writing, financial psychology and market theories and the processes behind what we choose to leave for future generations. I use what I learned as an entrepreneur and urban pioneer to help my clients achieve sustainable growth that is aligned with their core values.
-                </p>
-                
-                <p>
-                    My own values, which show up in all levels of my work, are authenticity, collaboration, stewardship, professional ethics, and support for ecological regeneration.
-                </p>
-                
-                <p>
-                    <span class="lato-black">I offer tailored support in:</span>
-                </p>
-                
-                <p>
-                    Financing and Grant Applications (public and private), even when you don't know how to communicate your project yet!
-                </p>
-                
-                <p>
-                    Strategic planning, where marrying the bottom line and social impact are key
-                </p>
-                
-                <p>
-                    Governance planning, for complex projects big and small in the non-profit sector
-                </p>
-                
-                <p>
-                    Modernizing and improving your organization's financial and administrative tools - especially if you dislike the mere mention of it.
-                </p>
-                
-                <p>
-                    <span class="lato-black">Before founding Studio Murmur</span>, I worked in Montréal's financial sector as a portfolio advisor. After completing a Master's in Conservation with a focus on temporary use, I contributed to several pioneering initiatives in urban innovation and heritage. I co-founded the Festival Vivre le Patrimoine (2015–2016), a citizen-led event that showcased Montréal's heritage through a living and inclusive lens. In 2016, I co-founded Entremise, a social-economy non-profit that brought temporary use into Montréal and Québec public policy. As Director General of Entremise, I successfully developed a sustainable hybrid model for growth and co-led the Young Project (2017–2018), the first proof of concept for temporary use in collaboration with the City of Montréal, which enabled more than 35 organizations to occupy a former public warehouse in Griffintown. In 2017, I coordinated the Conseil jeunesse de Montréal's strategic brief on vacant space and co-organized the Symposium on Temporary Uses, both of which equipped institutional and cultural stakeholders with practical tools. From 2019 to 2021, I also contributed to the creation of Espace Ville Autrement, a flagship site for urban experimentation on the UQAM campus, combining academic research, citizen practices, and the social economy.
-                </p>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="content-section">
-            <div class="projects-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Years</th>
-                            <th>Object</th>
-                            <th>Client</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="clickable-row">
-                            <td>Ongoing</td>
-                            <td>Values-oriented revenue diversification strategy</td>
-                            <td>Microclimat</td>
-                        </tr>
-                        <tr class="dropdown-row">
-                            <td colspan="3">
-                                <div class="table-dropdown-content">
-                                    <p>To accompany an analysis and team reflection centred on new and existing revenue streams, bringing their work in line with a values-based vision for the company's growth.</p>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="clickable-row">
-                            <td>Ongoing</td>
-                            <td>Territorial strategy and financing for the Quartier des métiers d'art</td>
-                            <td>Conseil de métiers d'arts du Québec</td>
-                        </tr>
-                        <tr class="dropdown-row">
-                            <td colspan="3">
-                                <div class="table-dropdown-content">
-                                    <p>To develop a comprehensive strategy for the planning, governance, and financing of the future Quartier des métiers d'art in Montréal. The project unites multiple partners—including the Écoles-ateliers of the PNFMA, artisans already established in the district, and all levels of government—around the reimagining of a rapidly developing sector, with a focus on the rehabilitation of a former naval warehouse in the Sud-Ouest.</p>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="clickable-row">
-                            <td>2024-2025</td>
-                            <td>Strategic planning and local positioning</td>
-                            <td>ERA Architects</td>
-                        </tr>
-                        <tr class="dropdown-row">
-                            <td colspan="3">
-                                <div class="table-dropdown-content">
-                                    <p>To support the Montréal office of this pan-Canadian architecture firm in a strategic planning process designed to strengthen its presence in the local market.</p>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="clickable-row">
-                            <td>2024</td>
-                            <td>Co-organizer for "Heritage: Accelerator of the Ecological Transition"</td>
-                            <td>Conseil du patrimoine de Montréal</td>
-                        </tr>
-                        <tr class="dropdown-row">
-                            <td colspan="3">
-                                <div class="table-dropdown-content">
-                                    <p>To collaborate in organizing the 9th internal Colloquium of the Conseil aimed at public stakeholders and focused on the role of existing buildings in citywide policies for decarbonization and ecological transition.</p>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="clickable-row">
-                            <td>2022-2023</td>
-                            <td>Financial optimization and organizational growth for an artisan enterprise</td>
-                            <td>MB Métalliers — Québec artisans in traditional ironwork and architectural restoration</td>
-                        </tr>
-                        <tr class="dropdown-row">
-                            <td colspan="3">
-                                <div class="table-dropdown-content">
-                                    <p>To accompany an artisan-led business through a period of rapid growth by leading a comprehensive organizational transformation. This involved modernizing financial administration by digitizing payroll, invoicing, accounting, and budgeting processes (QuickBooks, Dext, Google Workspace), introducing collaborative digital tools, and designing internal templates in dialogue with employees to strengthen administrative efficiency. I also implemented collective health insurance and retirement savings plans, and secured significant grants and financing to support the company's development.</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="content-section">
-            <div class="contact-content">
-                <p>I'd be delighted to discuss how we can work together. Reach out to start a conversation about your project.</p>
-                <div class="contact-info">
-                    <a href="mailto:mallycwilson@gmail.com">mallycwilson@gmail.com</a><br><br>
-                    (XXX) XXX-XXXX
+        <div class="dropdown-container">
+            <!-- About Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">About</button>
+                <div class="dropdown-content">
+                    <p>
+                        <span class="lato-black">Studio murmur</span> reflects my desire to work with my clients in their raw form and build something together, like an artist with white walls and wooden shelves who exposes their works and materials in a way that highlights their distinctive and authentic light.
+                    </p>
+                    
+                    <p>
+                        I always wanted to be an artisan or a builder. Instead, I studied classical history, finance, and heritage preservation. I've mastered research and writing, financial psychology and market theories and the processes behind what we choose to leave for future generations. I use what I learned as an entrepreneur and urban pioneer to help my clients achieve sustainable growth that is aligned with their core values.
+                    </p>
+                    
+                    <p>
+                        My own values, which show up in all levels of my work, are authenticity, collaboration, stewardship, professional ethics, and support for ecological regeneration.
+                    </p>
+                    
+                    <p><span class="lato-black">I offer tailored support in:</span></p>
+                    
+                    <p>
+                        Financing and Grant Applications (public and private), even when you don't know how to communicate your project yet!
+                    </p>
+                    
+                    <p>
+                        Strategic planning, where marrying the bottom line and social impact are key
+                    </p>
+                    
+                    <p>
+                        Governance planning, for complex projects big and small in the non-profit sector
+                    </p>
+                    
+                    <p>
+                        Modernizing and improving your organization's financial and administrative tools - especially if you dislike the mere mention of it.
+                    </p>
+                    
+                    <p>
+                        <span class="lato-black">Before founding Studio Murmur</span>, I worked in Montréal's financial sector as a portfolio advisor. After completing a Master's in Conservation with a focus on temporary use, I contributed to several pioneering initiatives in urban innovation and heritage. I co-founded the Festival Vivre le Patrimoine (2015–2016), a citizen-led event that showcased Montréal's heritage through a living and inclusive lens. In 2016, I co-founded Entremise, a social-economy non-profit that brought temporary use into Montréal and Québec public policy. As Director General of Entremise, I successfully developed a sustainable hybrid model for growth and co-led the Young Project (2017–2018), the first proof of concept for temporary use in collaboration with the City of Montréal, which enabled more than 35 organizations to occupy a former public warehouse in Griffintown. In 2017, I coordinated the Conseil jeunesse de Montréal's strategic brief on vacant space and co-organized the Symposium on Temporary Uses, both of which equipped institutional and cultural stakeholders with practical tools. From 2019 to 2021, I also contributed to the creation of Espace Ville Autrement, a flagship site for urban experimentation on the UQAM campus, combining academic research, citizen practices, and the social economy.
+                    </p>
                 </div>
             </div>
-        </section>
+
+            <!-- Projects Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">Projects</button>
+                <div class="dropdown-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Years</th>
+                                <th>Object</th>
+                                <th>Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="clickable-row">
+                                <td>Ongoing</td>
+                                <td>Values-oriented revenue diversification strategy</td>
+                                <td>Microclimat</td>
+                            </tr>
+                            <tr class="dropdown-row">
+                                <td colspan="3">
+                                    <div class="table-dropdown-content">
+                                        <p>To accompany an analysis and team reflection centred on new and existing revenue streams, bringing their work in line with a values-based vision for the company's growth.</p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="clickable-row">
+                                <td>Ongoing</td>
+                                <td>Territorial strategy and financing for the Quartier des métiers d'art</td>
+                                <td>Conseil de métiers d'arts du Québec</td>
+                            </tr>
+                            <tr class="dropdown-row">
+                                <td colspan="3">
+                                    <div class="table-dropdown-content">
+                                        <p>To develop a comprehensive strategy for the planning, governance, and financing of the future Quartier des métiers d'art in Montréal. The project unites multiple partners—including the Écoles-ateliers of the PNFMA, artisans already established in the district, and all levels of government—around the reimagining of a rapidly developing sector, with a focus on the rehabilitation of a former naval warehouse in the Sud-Ouest.</p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="clickable-row">
+                                <td>2024-2025</td>
+                                <td>Strategic planning and local positioning</td>
+                                <td>ERA Architects</td>
+                            </tr>
+                            <tr class="dropdown-row">
+                                <td colspan="3">
+                                    <div class="table-dropdown-content">
+                                        <p>To support the Montréal office of this pan-Canadian architecture firm in a strategic planning process designed to strengthen its presence in the local market.</p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="clickable-row">
+                                <td>2024</td>
+                                <td>Co-organizer for "Heritage: Accelerator of the Ecological Transition"</td>
+                                <td>Conseil du patrimoine de Montréal</td>
+                            </tr>
+                            <tr class="dropdown-row">
+                                <td colspan="3">
+                                    <div class="table-dropdown-content">
+                                        <p>To collaborate in organizing the 9th internal Colloquium of the Conseil aimed at public stakeholders and focused on the role of existing buildings in citywide policies for decarbonization and ecological transition.</p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="clickable-row">
+                                <td>2022-2023</td>
+                                <td>Financial optimization and organizational growth for an artisan enterprise</td>
+                                <td>MB Métalliers — Québec artisans in traditional ironwork and architectural restoration</td>
+                            </tr>
+                            <tr class="dropdown-row">
+                                <td colspan="3">
+                                    <div class="table-dropdown-content">
+                                        <p>To accompany an artisan-led business through a period of rapid growth by leading a comprehensive organizational transformation. This involved modernizing financial administration by digitizing payroll, invoicing, accounting, and budgeting processes (QuickBooks, Dext, Google Workspace), introducing collaborative digital tools, and designing internal templates in dialogue with employees to strengthen administrative efficiency. I also implemented collective health insurance and retirement savings plans, and secured significant grants and financing to support the company's development.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contact Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn">Contact</button>
+                <div class="dropdown-content">
+                    <p>I'd be delighted to discuss how we can work together. Reach out to start a conversation about your project.</p>
+                    <h3>
+                        <a href="mailto:mallycwilson@gmail.com">mallycwilson@gmail.com</a><br><br>
+                        (XXX) XXX-XXXX
+                    </h3>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -512,25 +457,34 @@
     </footer>
 
     <script>
-        // Navigation functionality
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const sections = document.querySelectorAll('.content-section');
+        const buttons = document.querySelectorAll('.dropbtn');
+        const dropdowns = document.querySelectorAll('.dropdown-content');
 
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetSection = button.dataset.section;
-                
-                // Update active button
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Update active section
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetSection) {
-                        section.classList.add('active');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const dropdown = this.nextElementSibling;
+
+                // Close other dropdowns
+                dropdowns.forEach(openDropdown => {
+                    if (openDropdown !== dropdown) {
+                        openDropdown.classList.remove('visible');
                     }
                 });
+
+                // Deactivate other buttons
+                buttons.forEach(btn => {
+                    if (btn !== this) btn.classList.remove('active');
+                });
+
+                // Toggle current dropdown
+                if (dropdown.classList.contains('visible')) {
+                    dropdown.classList.remove('visible');
+                    this.classList.remove('active');
+                } else {
+                    dropdown.classList.add('visible');
+                    this.classList.add('active');
+                }
             });
         });
 
