@@ -49,18 +49,14 @@
             flex: 1;
         }
 
-        .dropdown-container {
+        .menu-container {
             display: flex;
             justify-content: center;
             gap: 50px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropbtn {
+        .menu-btn {
             background: transparent;
             border: none;
             font-size: 16px;
@@ -69,11 +65,16 @@
             cursor: pointer;
             padding: 10px 0;
             color: #666;
-            transition: all 0.3s ease;
+            transition: letter-spacing 0.3s ease, color 0.3s ease;
             position: relative;
         }
 
-        .dropbtn::after {
+        .menu-btn:hover {
+            letter-spacing: 3px;
+            color: #1a1a1a;
+        }
+
+        .menu-btn::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -85,33 +86,36 @@
             transition: transform 0.3s ease;
         }
 
-        .dropbtn:hover {
+        .menu-btn.active {
             color: #1a1a1a;
+            letter-spacing: 2px;
         }
 
-        .dropbtn.active {
-            color: #1a1a1a;
-        }
-
-        .dropbtn.active::after {
+        .menu-btn.active::after {
             transform: scaleX(1);
         }
 
-        .dropdown-content {
+        .content-area {
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            transition: all 0.4s ease;
-            margin-top: 0;
+            transition: all 0.5s ease;
         }
 
-        .dropdown-content.visible {
+        .content-area.visible {
             max-height: 5000px;
             opacity: 1;
-            margin-top: 30px;
         }
 
-        .dropdown-content p {
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section p {
             font-size: 14px;
             line-height: 1.7;
             font-weight: 300;
@@ -120,7 +124,7 @@
             text-align: justify;
         }
 
-        .dropdown-content h3 {
+        .content-section h3 {
             font-size: 15px;
             font-weight: 300;
             text-align: center;
@@ -128,14 +132,14 @@
             line-height: 1.8;
         }
 
-        .dropdown-content h3 a {
+        .content-section h3 a {
             color: #1a1a1a;
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s ease;
         }
 
-        .dropdown-content h3 a:hover {
+        .content-section h3 a:hover {
             border-bottom-color: #1a1a1a;
         }
 
@@ -267,11 +271,11 @@
                 padding: 40px 20px 60px;
             }
 
-            .dropdown-container {
+            .menu-container {
                 gap: 35px;
             }
 
-            .dropbtn {
+            .menu-btn {
                 font-size: 14px;
             }
 
@@ -285,7 +289,7 @@
                 font-size: 12px;
             }
 
-            .dropdown-content p {
+            .content-section p {
                 font-size: 13px;
             }
         }
@@ -299,7 +303,7 @@
                 padding: 30px 15px 50px;
             }
 
-            .dropdown-container {
+            .menu-container {
                 gap: 25px;
             }
         }
@@ -311,139 +315,136 @@
     </header>
     
     <main>
-        <div class="dropdown-container">
-            <!-- About Dropdown -->
-            <div class="dropdown">
-                <button class="dropbtn">About</button>
-                <div class="dropdown-content">
-                    <p>
-                        <span class="lato-black">Studio murmur</span> reflects my desire to work with my clients in their raw form and build something together, like an artist with white walls and wooden shelves who exposes their works and materials in a way that highlights their distinctive and authentic light.
-                    </p>
-                    
-                    <p>
-                        I always wanted to be an artisan or a builder. Instead, I studied classical history, finance, and heritage preservation. I've mastered research and writing, financial psychology and market theories and the processes behind what we choose to leave for future generations. I use what I learned as an entrepreneur and urban pioneer to help my clients achieve sustainable growth that is aligned with their core values.
-                    </p>
-                    
-                    <p>
-                        My own values, which show up in all levels of my work, are authenticity, collaboration, stewardship, professional ethics, and support for ecological regeneration.
-                    </p>
-                    
-                    <p><span class="lato-black">I offer tailored support in:</span></p>
-                    
-                    <p>
-                        Financing and Grant Applications (public and private), even when you don't know how to communicate your project yet!
-                    </p>
-                    
-                    <p>
-                        Strategic planning, where marrying the bottom line and social impact are key
-                    </p>
-                    
-                    <p>
-                        Governance planning, for complex projects big and small in the non-profit sector
-                    </p>
-                    
-                    <p>
-                        Modernizing and improving your organization's financial and administrative tools - especially if you dislike the mere mention of it.
-                    </p>
-                    
-                    <p>
-                        <span class="lato-black">Before founding Studio Murmur</span>, I worked in Montréal's financial sector as a portfolio advisor. After completing a Master's in Conservation with a focus on temporary use, I contributed to several pioneering initiatives in urban innovation and heritage. I co-founded the Festival Vivre le Patrimoine (2015–2016), a citizen-led event that showcased Montréal's heritage through a living and inclusive lens. In 2016, I co-founded Entremise, a social-economy non-profit that brought temporary use into Montréal and Québec public policy. As Director General of Entremise, I successfully developed a sustainable hybrid model for growth and co-led the Young Project (2017–2018), the first proof of concept for temporary use in collaboration with the City of Montréal, which enabled more than 35 organizations to occupy a former public warehouse in Griffintown. In 2017, I coordinated the Conseil jeunesse de Montréal's strategic brief on vacant space and co-organized the Symposium on Temporary Uses, both of which equipped institutional and cultural stakeholders with practical tools. From 2019 to 2021, I also contributed to the creation of Espace Ville Autrement, a flagship site for urban experimentation on the UQAM campus, combining academic research, citizen practices, and the social economy.
-                    </p>
-                </div>
+        <div class="menu-container">
+            <button class="menu-btn active" data-section="about">About</button>
+            <button class="menu-btn" data-section="projects">Projects</button>
+            <button class="menu-btn" data-section="contact">Contact</button>
+        </div>
+
+        <div class="content-area visible">
+            <!-- About Section -->
+            <div id="about" class="content-section active">
+                <p>
+                    <span class="lato-black">Studio murmur</span> reflects my desire to work with my clients in their raw form and build something together, like an artist with white walls and wooden shelves who exposes their works and materials in a way that highlights their distinctive and authentic light.
+                </p>
+                
+                <p>
+                    I always wanted to be an artisan or a builder. Instead, I studied classical history, finance, and heritage preservation. I've mastered research and writing, financial psychology and market theories and the processes behind what we choose to leave for future generations. I use what I learned as an entrepreneur and urban pioneer to help my clients achieve sustainable growth that is aligned with their core values.
+                </p>
+                
+                <p>
+                    My own values, which show up in all levels of my work, are authenticity, collaboration, stewardship, professional ethics, and support for ecological regeneration.
+                </p>
+                
+                <p><span class="lato-black">I offer tailored support in:</span></p>
+                
+                <p>
+                    Financing and Grant Applications (public and private), even when you don't know how to communicate your project yet!
+                </p>
+                
+                <p>
+                    Strategic planning, where marrying the bottom line and social impact are key
+                </p>
+                
+                <p>
+                    Governance planning, for complex projects big and small in the non-profit sector
+                </p>
+                
+                <p>
+                    Modernizing and improving your organization's financial and administrative tools - especially if you dislike the mere mention of it.
+                </p>
+                
+                <p>
+                    <span class="lato-black">Before founding Studio Murmur</span>, I worked in Montréal's financial sector as a portfolio advisor. After completing a Master's in Conservation with a focus on temporary use, I contributed to several pioneering initiatives in urban innovation and heritage. I co-founded the Festival Vivre le Patrimoine (2015–2016), a citizen-led event that showcased Montréal's heritage through a living and inclusive lens. In 2016, I co-founded Entremise, a social-economy non-profit that brought temporary use into Montréal and Québec public policy. As Director General of Entremise, I successfully developed a sustainable hybrid model for growth and co-led the Young Project (2017–2018), the first proof of concept for temporary use in collaboration with the City of Montréal, which enabled more than 35 organizations to occupy a former public warehouse in Griffintown. In 2017, I coordinated the Conseil jeunesse de Montréal's strategic brief on vacant space and co-organized the Symposium on Temporary Uses, both of which equipped institutional and cultural stakeholders with practical tools. From 2019 to 2021, I also contributed to the creation of Espace Ville Autrement, a flagship site for urban experimentation on the UQAM campus, combining academic research, citizen practices, and the social economy.
+                </p>
             </div>
 
-            <!-- Projects Dropdown -->
-            <div class="dropdown">
-                <button class="dropbtn">Projects</button>
-                <div class="dropdown-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Years</th>
-                                <th>Object</th>
-                                <th>Client</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="clickable-row">
-                                <td>Ongoing</td>
-                                <td>Values-oriented revenue diversification strategy</td>
-                                <td>Microclimat</td>
-                            </tr>
-                            <tr class="dropdown-row">
-                                <td colspan="3">
-                                    <div class="table-dropdown-content">
-                                        <p>To accompany an analysis and team reflection centred on new and existing revenue streams, bringing their work in line with a values-based vision for the company's growth.</p>
-                                    </div>
-                                </td>
-                            </tr>
+            <!-- Projects Section -->
+            <div id="projects" class="content-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Years</th>
+                            <th>Object</th>
+                            <th>Client</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row">
+                            <td>Ongoing</td>
+                            <td>Values-oriented revenue diversification strategy</td>
+                            <td>Microclimat</td>
+                        </tr>
+                        <tr class="dropdown-row">
+                            <td colspan="3">
+                                <div class="table-dropdown-content">
+                                    <p>To accompany an analysis and team reflection centred on new and existing revenue streams, bringing their work in line with a values-based vision for the company's growth.</p>
+                                </div>
+                            </td>
+                        </tr>
 
-                            <tr class="clickable-row">
-                                <td>Ongoing</td>
-                                <td>Territorial strategy and financing for the Quartier des métiers d'art</td>
-                                <td>Conseil de métiers d'arts du Québec</td>
-                            </tr>
-                            <tr class="dropdown-row">
-                                <td colspan="3">
-                                    <div class="table-dropdown-content">
-                                        <p>To develop a comprehensive strategy for the planning, governance, and financing of the future Quartier des métiers d'art in Montréal. The project unites multiple partners—including the Écoles-ateliers of the PNFMA, artisans already established in the district, and all levels of government—around the reimagining of a rapidly developing sector, with a focus on the rehabilitation of a former naval warehouse in the Sud-Ouest.</p>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr class="clickable-row">
+                            <td>Ongoing</td>
+                            <td>Territorial strategy and financing for the Quartier des métiers d'art</td>
+                            <td>Conseil de métiers d'arts du Québec</td>
+                        </tr>
+                        <tr class="dropdown-row">
+                            <td colspan="3">
+                                <div class="table-dropdown-content">
+                                    <p>To develop a comprehensive strategy for the planning, governance, and financing of the future Quartier des métiers d'art in Montréal. The project unites multiple partners—including the Écoles-ateliers of the PNFMA, artisans already established in the district, and all levels of government—around the reimagining of a rapidly developing sector, with a focus on the rehabilitation of a former naval warehouse in the Sud-Ouest.</p>
+                                </div>
+                            </td>
+                        </tr>
 
-                            <tr class="clickable-row">
-                                <td>2024-2025</td>
-                                <td>Strategic planning and local positioning</td>
-                                <td>ERA Architects</td>
-                            </tr>
-                            <tr class="dropdown-row">
-                                <td colspan="3">
-                                    <div class="table-dropdown-content">
-                                        <p>To support the Montréal office of this pan-Canadian architecture firm in a strategic planning process designed to strengthen its presence in the local market.</p>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr class="clickable-row">
+                            <td>2024-2025</td>
+                            <td>Strategic planning and local positioning</td>
+                            <td>ERA Architects</td>
+                        </tr>
+                        <tr class="dropdown-row">
+                            <td colspan="3">
+                                <div class="table-dropdown-content">
+                                    <p>To support the Montréal office of this pan-Canadian architecture firm in a strategic planning process designed to strengthen its presence in the local market.</p>
+                                </div>
+                            </td>
+                        </tr>
 
-                            <tr class="clickable-row">
-                                <td>2024</td>
-                                <td>Co-organizer for "Heritage: Accelerator of the Ecological Transition"</td>
-                                <td>Conseil du patrimoine de Montréal</td>
-                            </tr>
-                            <tr class="dropdown-row">
-                                <td colspan="3">
-                                    <div class="table-dropdown-content">
-                                        <p>To collaborate in organizing the 9th internal Colloquium of the Conseil aimed at public stakeholders and focused on the role of existing buildings in citywide policies for decarbonization and ecological transition.</p>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tr class="clickable-row">
+                            <td>2024</td>
+                            <td>Co-organizer for "Heritage: Accelerator of the Ecological Transition"</td>
+                            <td>Conseil du patrimoine de Montréal</td>
+                        </tr>
+                        <tr class="dropdown-row">
+                            <td colspan="3">
+                                <div class="table-dropdown-content">
+                                    <p>To collaborate in organizing the 9th internal Colloquium of the Conseil aimed at public stakeholders and focused on the role of existing buildings in citywide policies for decarbonization and ecological transition.</p>
+                                </div>
+                            </td>
+                        </tr>
 
-                            <tr class="clickable-row">
-                                <td>2022-2023</td>
-                                <td>Financial optimization and organizational growth for an artisan enterprise</td>
-                                <td>MB Métalliers — Québec artisans in traditional ironwork and architectural restoration</td>
-                            </tr>
-                            <tr class="dropdown-row">
-                                <td colspan="3">
-                                    <div class="table-dropdown-content">
-                                        <p>To accompany an artisan-led business through a period of rapid growth by leading a comprehensive organizational transformation. This involved modernizing financial administration by digitizing payroll, invoicing, accounting, and budgeting processes (QuickBooks, Dext, Google Workspace), introducing collaborative digital tools, and designing internal templates in dialogue with employees to strengthen administrative efficiency. I also implemented collective health insurance and retirement savings plans, and secured significant grants and financing to support the company's development.</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <tr class="clickable-row">
+                            <td>2022-2023</td>
+                            <td>Financial optimization and organizational growth for an artisan enterprise</td>
+                            <td>MB Métalliers — Québec artisans in traditional ironwork and architectural restoration</td>
+                        </tr>
+                        <tr class="dropdown-row">
+                            <td colspan="3">
+                                <div class="table-dropdown-content">
+                                    <p>To accompany an artisan-led business through a period of rapid growth by leading a comprehensive organizational transformation. This involved modernizing financial administration by digitizing payroll, invoicing, accounting, and budgeting processes (QuickBooks, Dext, Google Workspace), introducing collaborative digital tools, and designing internal templates in dialogue with employees to strengthen administrative efficiency. I also implemented collective health insurance and retirement savings plans, and secured significant grants and financing to support the company's development.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Contact Dropdown -->
-            <div class="dropdown">
-                <button class="dropbtn">Contact</button>
-                <div class="dropdown-content">
-                    <p>I'd be delighted to discuss how we can work together. Reach out to start a conversation about your project.</p>
-                    <h3>
-                        <a href="mailto:mallycwilson@gmail.com">mallycwilson@gmail.com</a><br><br>
-                        (XXX) XXX-XXXX
-                    </h3>
-                </div>
+            <!-- Contact Section -->
+            <div id="contact" class="content-section">
+                <p>I'd be delighted to discuss how we can work together. Reach out to start a conversation about your project.</p>
+                <h3>
+                    <a href="mailto:mallycwilson@gmail.com">mallycwilson@gmail.com</a><br><br>
+                    (XXX) XXX-XXXX
+                </h3>
             </div>
         </div>
     </main>
@@ -457,34 +458,24 @@
     </footer>
 
     <script>
-        const buttons = document.querySelectorAll('.dropbtn');
-        const dropdowns = document.querySelectorAll('.dropdown-content');
+        const menuButtons = document.querySelectorAll('.menu-btn');
+        const contentSections = document.querySelectorAll('.content-section');
 
-        buttons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const dropdown = this.nextElementSibling;
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetSection = this.dataset.section;
 
-                // Close other dropdowns
-                dropdowns.forEach(openDropdown => {
-                    if (openDropdown !== dropdown) {
-                        openDropdown.classList.remove('visible');
+                // Update active button
+                menuButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update active content section
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetSection) {
+                        section.classList.add('active');
                     }
                 });
-
-                // Deactivate other buttons
-                buttons.forEach(btn => {
-                    if (btn !== this) btn.classList.remove('active');
-                });
-
-                // Toggle current dropdown
-                if (dropdown.classList.contains('visible')) {
-                    dropdown.classList.remove('visible');
-                    this.classList.remove('active');
-                } else {
-                    dropdown.classList.add('visible');
-                    this.classList.add('active');
-                }
             });
         });
 
